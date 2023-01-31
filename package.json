@@ -6,7 +6,8 @@
   "scripts": {
     "test": "mocha",
     "singleTest": "mocha ./test/service/userService-test  --timeout 50000",
-    "start": "node index.js"
+    "start": "node index.js",
+    "worker": "node index.js"
   },
   "author": "Daniela Muzaka",
   "license": "ISC",
