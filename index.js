@@ -16,7 +16,7 @@ const start = async () => {
 
     const PORT = process.env.SERVER_PORT || 8080;
     app.listen(PORT, () => {
-      console.log(`Server is running on port ${SERVER_PORT}.`);
+      console.log(`Server is running on port ${PORT}.`);
     });
   } catch (err) {
     console.error(`Error connecting to MongoDB ${err}`);
