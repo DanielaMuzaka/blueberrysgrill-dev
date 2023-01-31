@@ -1,0 +1,474 @@
+{
+	"info": {
+		"_postman_id": "79656a13-d9b5-40cd-a190-654c3588bee8",
+		"name": "Blueberrys",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24238683"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "/signin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"mary\",\r\n    \"surname\" : \"muzaka\" ,\r\n    \"phone\" : \"0675467345\",\r\n    \"email\" : \"mary@test.com\" ,\r\n    \"password\" : \"mary\",\r\n    \"active\" : false,\r\n    \"role\" : \"user\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/signin?tenantId=63ce48580bf7f5918b957bef",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"signin"
+							],
+							"query": [
+								{
+									"key": "tenantId",
+									"value": "63ce48580bf7f5918b957bef"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"postman.setEnvironmentVariable('auth', jsonData.token);\r",
+									"postman.setEnvironmentVariable('userId', jsonData.userId);\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer ",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\" : \"daniela@test.com\" ,\r\n    \"password\" : \"daniela\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/users",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/users?name=daniela&surname=muzaka&email=daniela@test.com&phone=675467345&role=user&active=false&tenant=63ce48580bf7f5918b957bef",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "daniela"
+								},
+								{
+									"key": "surname",
+									"value": "muzaka"
+								},
+								{
+									"key": "email",
+									"value": "daniela@test.com"
+								},
+								{
+									"key": "phone",
+									"value": "675467345"
+								},
+								{
+									"key": "role",
+									"value": "user"
+								},
+								{
+									"key": "active",
+									"value": "false"
+								},
+								{
+									"key": "tenant",
+									"value": "63ce48580bf7f5918b957bef"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/users/id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/users/63ce7d436bbc8e0520d9883f",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users",
+								"63ce7d436bbc8e0520d9883f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/users/id sameUser",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"ermal\",\r\n    \"surname\" : \"test\" ,\r\n    \"phone\" : \"067543\",\r\n    \"email\" : \"ermal@test.com\" ,\r\n    \"password\" : \"ermal\",\r\n    \"active\" : \"false\",\r\n    \"role\" : \"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/users/63ce7d436bbc8e0520d9883f",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users",
+								"63ce7d436bbc8e0520d9883f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/users/id differentUser",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"ermal\",\r\n    \"surname\" : \"aliraj\" ,\r\n    \"phone\" : \"555\",\r\n    \"email\" : \"ermal@test.com\" ,\r\n    \"password\" : \"ermal\",\r\n    \"active\" : \"false\",\r\n    \"role\" : \"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/users/63ce4a5011f698344c642d7f",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users",
+								"63ce4a5011f698344c642d7f"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "review",
+			"item": [
+				{
+					"name": "/reviews",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhbmlAdGVzdC5jb20iLCJ1c2VySWQiOiI2M2M3ZjU1MmI4MjFlMzA2MmNkZjA5Y2MiLCJpYXQiOjE2NzQwNTM4MTUsImV4cCI6MTY3NDA1NzQxNX0.mcTuYLTq6GN-b95roaNI1eMFuUshfN32VtSX55PjU5k",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/reviews?rank=1&description=desc2&userId=63ce843a3413b93c98739b06&tenant=63ce48580bf7f5918b957bef&active=false",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"reviews"
+							],
+							"query": [
+								{
+									"key": "rank",
+									"value": "1"
+								},
+								{
+									"key": "description",
+									"value": "desc2"
+								},
+								{
+									"key": "userId",
+									"value": "63ce843a3413b93c98739b06"
+								},
+								{
+									"key": "tenant",
+									"value": "63ce48580bf7f5918b957bef"
+								},
+								{
+									"key": "active",
+									"value": "false"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/reviews/id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/reviews/63ce4aec9971572f3c759f22",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"reviews",
+								"63ce4aec9971572f3c759f22"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/review",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth}}",
+								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"rank\" : \"1\" ,\r\n    \"description\" : \"This is a test\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/review?tenantId=63ce48580bf7f5918b957bef",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"review"
+							],
+							"query": [
+								{
+									"key": "tenantId",
+									"value": "63ce48580bf7f5918b957bef"
+								},
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/review/id",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"rank\" : \"5\",\r\n    \"description\" : \"Test\",\r\n    \"active\" : \"false\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/review/63ce7fa46bbc8e0520d98866",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"review",
+								"63ce7fa46bbc8e0520d98866"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "/ping",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

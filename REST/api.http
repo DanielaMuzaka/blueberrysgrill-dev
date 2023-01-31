@@ -1,0 +1,52 @@
+### Ping API
+GET http://localhost:8080/
+
+### signin
+POST http://localhost:8080/signin
+Content-Type: application/json
+
+{
+  "name": "daniela",
+  "surname": "muzaka",
+  "email": "daniela@test.com",
+  "phone": "333",
+  "password": "daniela",
+  "tenant" : "63cad6d93a030b12787ce843"
+  
+}
+
+### login
+POST http://localhost:8080/login
+Content-Type: application/json
+
+{
+  "email": "daniela@test.com",
+  "password": "daniela"
+}
+
+### getAll
+GET http://localhost:8080/users
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhbmllbGFAdGVzdC5jb20iLCJ1c2VySWQiOiI2M2M5NGJlMTMwYzExNjA5YzRlMmQ1NjAiLCJpYXQiOjE2NzQxMzY1NjEsImV4cCI6MTY3NDE0MDE2MX0.m-riukz-YdKBFUIm-gmjsBsH831hz2VspimUR7XedkE
+
+### getById
+GET http://localhost:8080/users/63c94be130c11609c4e2d560
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhbmllbGFAdGVzdC5jb20iLCJ1c2VySWQiOiI2M2M5NGJlMTMwYzExNjA5YzRlMmQ1NjAiLCJpYXQiOjE2NzQxMzY1NjEsImV4cCI6MTY3NDE0MDE2MX0.m-riukz-YdKBFUIm-gmjsBsH831hz2VspimUR7XedkE
+
+### updateById
+PUT http://localhost:8080/users/63c94be130c11609c4e2d560
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhbmllbGFAdGVzdC5jb20iLCJ1c2VySWQiOiI2M2M5NGJlMTMwYzExNjA5YzRlMmQ1NjAiLCJpYXQiOjE2NzQxMzY1NjEsImV4cCI6MTY3NDE0MDE2MX0.m-riukz-YdKBFUIm-gmjsBsH831hz2VspimUR7XedkE
+
+{
+  "name": "daniela",
+  "surname": "test",
+  "email": "daniela@test.com",
+  "phone": "2345555555",
+  "password": "daniela",
+  "active" : "true",
+  "tenant" : "63cad6d93a030b12787ce843"
+}
+
+

@@ -1,0 +1,30 @@
+### getAll
+GET http://localhost:8080/reviews
+
+### getById
+GET http://localhost:8080/reviews/63c9504430c11609c4e2d56d
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhbmllbGFAdGVzdC5jb20iLCJ1c2VySWQiOiI2M2M5NGJlMTMwYzExNjA5YzRlMmQ1NjAiLCJpYXQiOjE2NzQxMzY1NjEsImV4cCI6MTY3NDE0MDE2MX0.m-riukz-YdKBFUIm-gmjsBsH831hz2VspimUR7XedkE
+Content-Type: application/json
+
+### create
+POST http://localhost:8080/review
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhbmllbGFAdGVzdC5jb20iLCJ1c2VySWQiOiI2M2M5NGJlMTMwYzExNjA5YzRlMmQ1NjAiLCJpYXQiOjE2NzQxMzY1NjEsImV4cCI6MTY3NDE0MDE2MX0.m-riukz-YdKBFUIm-gmjsBsH831hz2VspimUR7XedkE
+
+{
+    "rank": "1",
+    "description": "This is a test",
+    "tenant" : "63cad6d93a030b12787ce843"
+}
+
+### updateById
+PUT http://localhost:8080/review/63c9504430c11609c4e2d56d
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhbmllbGFAdGVzdC5jb20iLCJ1c2VySWQiOiI2M2M5NGJlMTMwYzExNjA5YzRlMmQ1NjAiLCJpYXQiOjE2NzQxMzY1NjEsImV4cCI6MTY3NDE0MDE2MX0.m-riukz-YdKBFUIm-gmjsBsH831hz2VspimUR7XedkE
+
+{
+  "rank" : "2",
+  "description" : "This is a test",
+  "active" : "true",
+  "tenant" : "63cad6d93a030b12787ce843"
+}
