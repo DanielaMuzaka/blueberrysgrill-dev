@@ -2,7 +2,7 @@
   "name": "blueberrys-grill",
   "version": "1.0.0",
   "description": "Backend API used for BlueBerry's Grill.\r The API will be used by both Front-End and Admin Tool.",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
     "test": "mocha",
     "singleTest": "mocha ./test/service/userService-test  --timeout 50000",
