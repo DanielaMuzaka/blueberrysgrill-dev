@@ -11,7 +11,7 @@ const start = async () => {
     //   useCreateIndex: true
     // });
     
-    await mongoose.connect(process.env.MONGO_URI);
+    mongoose.connect(process.env.MONGO_URI);
     console.info(`Connected to MongoDb`);
 
     const PORT = process.env.SERVER_PORT || 8080;
