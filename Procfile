@@ -1,0 +1,1 @@
+web: node subdirectory/index.js
